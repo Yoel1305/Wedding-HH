@@ -11,228 +11,17 @@
         href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap)"
         rel="stylesheet">
 
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            overflow: hidden;
-            color: #fff;
-            text-align: center;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('image-couverture.jpeg') no-repeat center center/cover;
-            filter: brightness(0.45) blur(2px);
-            animation: fadeInBg 4s ease-in-out forwards;
-            z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.85));
-            z-index: -1;
-        }
-
-        @keyframes fadeInBg {
-            from {
-                opacity: 0;
-                transform: scale(1.1);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100%;
-            padding: 0 2rem;
-        }
-
-        /* --- TITRE --- */
-        h1 {
-            font-family: "Great Vibes", cursive;
-            font-size: 7vw;
-            font-weight: 500;
-            color: #ffb3c1;
-            letter-spacing: 3px;
-            margin: 0;
-            animation: appear 2s ease-out forwards, glow 3s ease-in-out infinite alternate;
-        }
-
-        h1 span {
-            font-size: 6vw;
-            margin: 0 10px;
-            animation: ringFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes appear {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 15px #ff4b68;
-            }
-
-            to {
-                text-shadow: 0 0 40px #ff91a3, 0 0 60px #ff4b68;
-            }
-        }
-
-        @keyframes ringFloat {
-
-            0%,
-            100% {
-                transform: translateY(6px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(15deg);
-            }
-        }
-
-        /* --- SOUS-TITRE --- */
-        h2 {
-            font-weight: 300;
-            letter-spacing: 1px;
-            color: #f2f2f2;
-            margin-top: 0.8rem;
-            font-size: 1.2rem;
-            opacity: 0;
-            animation: fadeIn 2.5s ease-out 1.2s forwards;
-        }
-
-        .quote {
-            font-family: "Great Vibes", cursive;
-            color: #ffd6df;
-            font-size: 2rem;
-            margin-top: 0.5rem;
-            opacity: 0;
-            animation: fadeIn 2.5s ease-out 2s forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* --- COMPTEUR --- */
-        .timer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-            opacity: 0;
-            animation: fadeIn 3s ease-out 3s forwards;
-        }
-
-        .timer-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .time-box {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 15px 25px;
-            border-radius: 12px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .time-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 30px rgba(255, 125, 150, 0.4);
-        }
-
-        .number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ff7a92;
-            text-shadow: 0 0 8px rgba(255, 75, 104, 0.6);
-        }
-
-        .label {
-            font-size: 0.9rem;
-            color: #ccc;
-            text-transform: uppercase;
-            font-weight: 400;
-        }
-
-        /* --- TOTAL JOURS --- */
-        .total-days {
-            margin-top: 2rem;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #ffc2cc;
-            text-shadow: 0 0 15px rgba(255, 100, 130, 0.3);
-            opacity: 0;
-            animation: fadeIn 2s ease-out 4s forwards;
-        }
-
-        /* --- BOUTON --- */
-        button {
-            margin-top: 2.5rem;
-            background: linear-gradient(45deg, #ff7a92, #ff4b68);
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            color: #fff;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            box-shadow: 0 0 25px rgba(255, 74, 100, 0.3);
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeIn 2s ease-out 5s forwards;
-        }
-
-        button:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 50px rgba(255, 96, 125, 0.6);
-        }
-    </style>
+    <!-- Feuille de style -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="hearts-container" id="hearts-container"></div>
+
     <div class="container">
         <h1>Henri <span>💍</span> Hilarie</h1>
         <h2>Mariage célébré le 4 octobre 2025 à 10h (GMT)</h2>
-        <div class="quote">Deux âmes, un seul amour éternel 💕</div>
+        <div class="quote">Deux âmes, un seul amour éternel 💙</div>
 
         <div class="timer">
             <div class="timer-row">
@@ -243,10 +32,6 @@
                 <div class="time-box">
                     <div class="number" id="months">--</div>
                     <div class="label">mois</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="weeks">--</div>
-                    <div class="label">semaines</div>
                 </div>
             </div>
 
@@ -270,41 +55,17 @@
             </div>
         </div>
 
-        <div class="total-days" id="totalDays">Soit ... jours d’amour 💖</div>
+        <div class="total-days" id="totalDays">Soit ... jours d’amour 💙</div>
 
-        <button onclick="window.location.href='media.html'">Revivre cette journée magique ❤️</button>
+        <button onclick="window.location.href='media.html'">Revivre cette journée magique 💙</button>
     </div>
 
-    <script>
-        const weddingDate = new Date("2025-10-04T10:00:00Z");
+    <!-- Musique de fond “Perfect” -->
+    <iframe width="0" height="0"
+        src="[youtube.com](https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g)"
+        frameborder="0" allow="autoplay"></iframe>
 
-        function updateTimer() {
-            const now = new Date();
-            let diff = now - weddingDate;
-            if (diff < 0) diff = 0;
-
-            const seconds = Math.floor(diff / 1000);
-            const minutes = Math.floor(seconds / 60);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-            const weeks = Math.floor(days / 7);
-            const months = Math.floor(days / 30.44);
-            const years = Math.floor(days / 365.25);
-
-            document.getElementById("years").innerText = years;
-            document.getElementById("months").innerText = months;
-            document.getElementById("weeks").innerText = weeks;
-            document.getElementById("days").innerText = days % 30;
-            document.getElementById("hours").innerText = hours % 24;
-            document.getElementById("minutes").innerText = minutes % 60;
-            document.getElementById("seconds").innerText = seconds % 60;
-
-            // compteur total de jours
-            document.getElementById("totalDays").innerText = `Soit ${days} jours d’amour 💖`;
-        }
-
-        setInterval(updateTimer, 1000);
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
