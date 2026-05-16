@@ -1,102 +1,174 @@
-// === COEURS FLOTTANTS ANIMÉS ===
-const heartsContainer = document.getElementById("hearts-container");
-
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "💙";
-
-  // position et taille aléatoires
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = 15 + Math.random() * 25 + "px";
-
-  // durée et direction aléatoires
-  const duration = 6 + Math.random() * 4;
-  heart.style.animationDuration = duration + "s";
-
-  const direction = Math.random();
-  let translateX = "0";
-  if (direction < 0.33) translateX = "-25vw";
-  else if (direction < 0.66) translateX = "25vw";
-
-  // créer une animation unique par cœur
-  const animName = `floatHeart${Date.now()}${Math.floor(Math.random() * 1000)}`;
-  const heartAnimation = document.createElement("style");
-  heartAnimation.innerHTML = `
-    @keyframes ${animName} {
-      0% {
-        transform: translate(0, 100vh) scale(0.8);
-        opacity: 0.6;
-      }
-      50% {
-        opacity: 1;
-        transform: translate(${translateX}, 50vh) scale(1.1);
-      }
-      100% {
-        transform: translate(calc(${translateX} / 2), -10vh) scale(1.3);
-        opacity: 0;
-      }
-    }
-  `;
-  document.head.appendChild(heartAnimation);
-  heart.style.animationName = animName;
-
-  heartsContainer.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-    heartAnimation.remove();
-  }, duration * 1000);
-}
-
-setInterval(createHeart, 500);
-
-// === COMPTEUR D'AMOUR ===
-const weddingDate = new Date("2025-10-04T10:00:00Z");
+const WEDDING_DATE = new Date("2025-10-04T10:00:00Z");
+const PHOTO_COUNT = 63;
 
 function updateTimer() {
   const now = new Date();
-  let diff = now - weddingDate;
-  if (diff < 0) diff = 0;
+  const displayDate = now < WEDDING_DATE ? WEDDING_DATE : now;
+  const diff = Math.max(0, displayDate.getTime() - WEDDING_DATE.getTime());
 
-  // --- Calcul précis années / mois / jours ---
-  let years = now.getFullYear() - weddingDate.getFullYear();
-  let months = now.getMonth() - weddingDate.getMonth();
-  let days = now.getDate() - weddingDate.getDate();
+  let years = displayDate.getUTCFullYear() - WEDDING_DATE.getUTCFullYear();
+  let months = displayDate.getUTCMonth() - WEDDING_DATE.getUTCMonth();
+  let days = displayDate.getUTCDate() - WEDDING_DATE.getUTCDate();
 
   if (days < 0) {
-    // on “emprunte” les jours du mois précédent
-    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-    const daysInPrevMonth = prevMonth.getDate();
-    days += daysInPrevMonth;
-    months--;
+    const previousMonth = new Date(Date.UTC(displayDate.getUTCFullYear(), displayDate.getUTCMonth(), 0));
+    days += previousMonth.getUTCDate();
+    months -= 1;
   }
 
   if (months < 0) {
     months += 12;
-    years--;
+    years -= 1;
   }
 
-  // --- Calcul total global ---
-  const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const totalHours = Math.floor(diff / (1000 * 60 * 60));
-  const totalMinutes = Math.floor(diff / (1000 * 60));
   const totalSeconds = Math.floor(diff / 1000);
+  const totalDays = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor(totalSeconds / 3600) % 24;
+  const minutes = Math.floor(totalSeconds / 60) % 60;
+  const seconds = totalSeconds % 60;
 
-  const remainderHours = totalHours % 24;
-  const remainderMinutes = totalMinutes % 60;
-  const remainderSeconds = totalSeconds % 60;
+  const values = { years, months, days, hours, minutes, seconds };
 
-  // --- Affichage ---
-  document.getElementById("years").innerText = years;
-  document.getElementById("months").innerText = months;
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = remainderHours;
-  document.getElementById("minutes").innerText = remainderMinutes;
-  document.getElementById("seconds").innerText = remainderSeconds;
+  Object.entries(values).forEach(([id, value]) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.textContent = String(value).padStart(id === "years" || id === "months" || id === "days" ? 1 : 2, "0");
+    }
+  });
 
-  document.getElementById("totalDays").innerText =
-    `Soit ${totalDays} jours d’amour 💙`;
+  const totalDaysElement = document.getElementById("totalDays");
+  if (totalDaysElement) {
+    totalDaysElement.textContent = `Soit ${totalDays.toLocaleString("fr-FR")} jours d'amour.`;
+  }
 }
 
-setInterval(updateTimer, 1000);
+function createHeart() {
+  const container = document.getElementById("hearts-container");
+  if (!container) return;
+
+  const heart = document.createElement("span");
+  const duration = 7 + Math.random() * 5;
+  const drift = (Math.random() - 0.5) * 160;
+
+  heart.className = "heart";
+  heart.textContent = Math.random() > 0.5 ? "♡" : "♥";
+  heart.style.left = `${Math.random() * 100}vw`;
+  heart.style.fontSize = `${16 + Math.random() * 24}px`;
+  heart.style.color = Math.random() > 0.5 ? "#d7b56d" : "#62d2c8";
+  heart.animate(
+    [
+      { transform: "translate3d(0, 0, 0) scale(0.8)", opacity: 0 },
+      { transform: `translate3d(${drift * 0.45}px, -48vh, 0) scale(1)`, opacity: 0.72 },
+      { transform: `translate3d(${drift}px, -104vh, 0) scale(1.2)`, opacity: 0 }
+    ],
+    { duration: duration * 1000, easing: "cubic-bezier(.22,.61,.36,1)" }
+  );
+
+  container.appendChild(heart);
+  window.setTimeout(() => heart.remove(), duration * 1000);
+}
+
+function initHome() {
+  updateTimer();
+  window.setInterval(updateTimer, 1000);
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.setInterval(createHeart, 700);
+  }
+}
+
+function initGallery() {
+  const gallery = document.getElementById("gallery");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("closeBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const photoCount = document.getElementById("photoCount");
+
+  if (!gallery || !lightbox || !lightboxImg || !closeBtn || !prevBtn || !nextBtn || !photoCount) {
+    return;
+  }
+
+  let activeIndex = 0;
+  const photos = Array.from({ length: PHOTO_COUNT }, (_, index) => ({
+    src: `photo${index + 1}.jpeg`,
+    alt: `Souvenir du mariage ${index + 1}`
+  }));
+
+  const fragment = document.createDocumentFragment();
+  photos.forEach((photo, index) => {
+    const button = document.createElement("button");
+    const image = document.createElement("img");
+
+    button.className = "photo-card";
+    button.type = "button";
+    button.style.animationDelay = `${Math.min(index * 18, 520)}ms`;
+    button.setAttribute("aria-label", `Ouvrir la photo ${index + 1}`);
+
+    image.src = photo.src;
+    image.alt = photo.alt;
+    image.loading = index < 8 ? "eager" : "lazy";
+    image.decoding = "async";
+
+    button.appendChild(image);
+    button.addEventListener("click", () => openLightbox(index));
+    fragment.appendChild(button);
+  });
+
+  gallery.appendChild(fragment);
+
+  function renderLightbox() {
+    const photo = photos[activeIndex];
+    lightboxImg.src = photo.src;
+    lightboxImg.alt = photo.alt;
+    photoCount.textContent = `${activeIndex + 1} / ${photos.length}`;
+  }
+
+  function openLightbox(index) {
+    activeIndex = index;
+    renderLightbox();
+    if (typeof lightbox.showModal === "function") {
+      lightbox.showModal();
+    } else {
+      lightbox.setAttribute("open", "");
+    }
+  }
+
+  function closeLightbox() {
+    if (typeof lightbox.close === "function") {
+      lightbox.close();
+    } else {
+      lightbox.removeAttribute("open");
+    }
+  }
+
+  function move(step) {
+    activeIndex = (activeIndex + step + photos.length) % photos.length;
+    renderLightbox();
+  }
+
+  closeBtn.addEventListener("click", closeLightbox);
+  prevBtn.addEventListener("click", () => move(-1));
+  nextBtn.addEventListener("click", () => move(1));
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.open) return;
+    if (event.key === "ArrowLeft") move(-1);
+    if (event.key === "ArrowRight") move(1);
+  });
+}
+
+if (document.body.classList.contains("home-page")) {
+  initHome();
+}
+
+if (document.body.classList.contains("gallery-page")) {
+  initGallery();
+}

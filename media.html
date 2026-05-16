@@ -4,204 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souvenirs de notre mariage</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 2rem 0;
-            color: #7ac4ff;
-            font-family: "Great Vibes", cursive;
-            font-size: 3rem;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(122, 196, 255, 0.4);
-        }
-
-        a {
-            display: block;
-            text-align: center;
-            margin: 2rem;
-            color: #b3e0ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- LIGHTBOX --- */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 25px rgba(150, 220, 255, 0.5);
-        }
-
-        .lightbox.visible {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            color: #b3e0ff;
-            font-size: 2.5rem;
-            cursor: pointer;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-            transition: transform 0.2s;
-        }
-
-        .close-btn:hover {
-            transform: scale(1.1);
-        }
-    </style>
+    <meta name="theme-color" content="#111827">
+    <title>Souvenirs du mariage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <h1>Souvenirs de notre mariage 💙</h1>
+<body class="gallery-page">
+    <header class="gallery-header">
+        <a class="back-link" href="index.html" aria-label="Retour à l'accueil">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 12H5m6 6-6-6 6-6" />
+            </svg>
+            <span>Accueil</span>
+        </a>
+        <p class="eyebrow">Album photo</p>
+        <h1>Souvenirs de notre mariage</h1>
+    </header>
 
-    <div class="gallery">
-        <img src="photo1.jpeg" alt="Photo du mariage 1">
-        <img src="photo2.jpeg" alt="Photo du mariage 2">
-        <img src="photo3.jpeg" alt="Photo du mariage 3">
-        <img src="photo4.jpeg" alt="Photo du mariage 4">
-        <img src="photo5.jpeg" alt="Photo du mariage 4">
-        <img src="photo6.jpeg" alt="Photo du mariage 4">
-        <img src="photo7.jpeg" alt="Photo du mariage 4">
-        <img src="photo8.jpeg" alt="Photo du mariage 4">
-        <img src="photo9.jpeg" alt="Photo du mariage 4">
-        <img src="photo10.jpeg" alt="Photo du mariage 4">
-        <img src="photo11.jpeg" alt="Photo du mariage 4">
-        <img src="photo12.jpeg" alt="Photo du mariage 4">
-        <img src="photo13.jpeg" alt="Photo du mariage 4">
-        <img src="photo14.jpeg" alt="Photo du mariage 4">
-        <img src="photo15.jpeg" alt="Photo du mariage 4">
-        <img src="photo16.jpeg" alt="Photo du mariage 4">
-        <img src="photo17.jpeg" alt="Photo du mariage 4">
-        <img src="photo18.jpeg" alt="Photo du mariage 4">
-        <img src="photo19.jpeg" alt="Photo du mariage 4">
-        <img src="photo20.jpeg" alt="Photo du mariage 4">
-        <img src="photo21.jpeg" alt="Photo du mariage 4">
-        <img src="photo22.jpeg" alt="Photo du mariage 4">
-        <img src="photo23.jpeg" alt="Photo du mariage 4">
-        <img src="photo24.jpeg" alt="Photo du mariage 4">
-        <img src="photo25.jpeg" alt="Photo du mariage 4">
-        <img src="photo26.jpeg" alt="Photo du mariage 4">
-        <img src="photo27.jpeg" alt="Photo du mariage 4">
-        <img src="photo28.jpeg" alt="Photo du mariage 4">
-        <img src="photo29.jpeg" alt="Photo du mariage 4">
-        <img src="photo30.jpeg" alt="Photo du mariage 4">
-        <img src="photo31.jpeg" alt="Photo du mariage 4">
-        <img src="photo32.jpeg" alt="Photo du mariage 4">
-        <img src="photo33.jpeg" alt="Photo du mariage 4">
-        <img src="photo34.jpeg" alt="Photo du mariage 4">
-        <img src="photo35.jpeg" alt="Photo du mariage 4">
-        <img src="photo36.jpeg" alt="Photo du mariage 4">
-        <img src="photo37.jpeg" alt="Photo du mariage 4">
-        <img src="photo38.jpeg" alt="Photo du mariage 4">
-        <img src="photo39.jpeg" alt="Photo du mariage 4">
-        <img src="photo40.jpeg" alt="Photo du mariage 4">
-        <img src="photo41.jpeg" alt="Photo du mariage 4">
-        <img src="photo42.jpeg" alt="Photo du mariage 4">
-        <img src="photo43.jpeg" alt="Photo du mariage 4">
-        <img src="photo44.jpeg" alt="Photo du mariage 4">
-        <img src="photo45.jpeg" alt="Photo du mariage 4">
-        <img src="photo46.jpeg" alt="Photo du mariage 4">
-        <img src="photo47.jpeg" alt="Photo du mariage 4">
-        <img src="photo48.jpeg" alt="Photo du mariage 4">
-        <img src="photo49.jpeg" alt="Photo du mariage 4">
-        <img src="photo50.jpeg" alt="Photo du mariage 4">
-        <img src="photo51.jpeg" alt="Photo du mariage 4">
-        <img src="photo52.jpeg" alt="Photo du mariage 4">
-        <img src="photo53.jpeg" alt="Photo du mariage 4">
-        <img src="photo54.jpeg" alt="Photo du mariage 4">
-        <img src="photo55.jpeg" alt="Photo du mariage 4">
-        <img src="photo56.jpeg" alt="Photo du mariage 4">
-        <img src="photo57.jpeg" alt="Photo du mariage 4">
-        <img src="photo58.jpeg" alt="Photo du mariage 4">
-        <img src="photo59.jpeg" alt="Photo du mariage 4">
-        <img src="photo60.jpeg" alt="Photo du mariage 4">
-        <img src="photo61.jpeg" alt="Photo du mariage 4">
-        <img src="photo62.jpeg" alt="Photo du mariage 4">
-        <img src="photo63.jpeg" alt="Photo du mariage 4">
-    </div>
+    <main>
+        <section class="gallery" id="gallery" aria-label="Galerie des photos du mariage"></section>
+    </main>
 
-    <a href="index.html">← Retour à la page principale</a>
+    <dialog class="lightbox" id="lightbox" aria-label="Photo agrandie">
+        <button class="icon-button close-btn" id="closeBtn" type="button" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+        </button>
+        <button class="icon-button nav-btn prev-btn" id="prevBtn" type="button" aria-label="Photo précédente">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 18 9 12l6-6" />
+            </svg>
+        </button>
+        <img src="" alt="" id="lightboxImg">
+        <button class="icon-button nav-btn next-btn" id="nextBtn" type="button" aria-label="Photo suivante">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+            </svg>
+        </button>
+        <p class="photo-count" id="photoCount"></p>
+    </dialog>
 
-    <!-- Fenêtre Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <span class="close-btn" id="closeBtn">&times;</span>
-        <img src="" alt="Photo en grand" id="lightboxImg">
-    </div>
-
-    <script>
-        const galleryImages = document.querySelectorAll('.gallery img');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const closeBtn = document.getElementById('closeBtn');
-
-        galleryImages.forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightbox.classList.add('visible');
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            lightbox.classList.remove('visible');
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('visible');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

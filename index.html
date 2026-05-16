@@ -4,66 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
     <title>Mariage de Henri & Hilarie</title>
-
-    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap)"
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    <!-- Feuille de style -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="hearts-container" id="hearts-container"></div>
+<body class="home-page">
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="hearts-container" id="hearts-container" aria-hidden="true"></div>
 
-    <div class="container">
-        <h1>Henri <span>💍</span> Hilarie</h1>
-        <h2>Mariage célébré le 4 octobre 2025 à 10h (GMT)</h2>
-        <div class="quote">Deux âmes, un seul amour éternel 💙</div>
+    <main class="hero-shell">
+        <section class="hero-copy" aria-labelledby="page-title">
+            <p class="eyebrow">4 octobre 2025 · 10h GMT</p>
+            <h1 id="page-title">Henri <span aria-hidden="true">💍</span> Hilarie</h1>
+            <p class="quote">Deux âmes, un seul amour éternel.</p>
 
-        <div class="timer">
-            <div class="timer-row">
+            <div class="timer" aria-label="Temps écoulé depuis le mariage">
                 <div class="time-box">
-                    <div class="number" id="years">--</div>
-                    <div class="label">années</div>
+                    <strong id="years">--</strong>
+                    <span>années</span>
                 </div>
                 <div class="time-box">
-                    <div class="number" id="months">--</div>
-                    <div class="label">mois</div>
-                </div>
-            </div>
-
-            <div class="timer-row">
-                <div class="time-box">
-                    <div class="number" id="days">--</div>
-                    <div class="label">jours</div>
+                    <strong id="months">--</strong>
+                    <span>mois</span>
                 </div>
                 <div class="time-box">
-                    <div class="number" id="hours">--</div>
-                    <div class="label">heures</div>
+                    <strong id="days">--</strong>
+                    <span>jours</span>
                 </div>
                 <div class="time-box">
-                    <div class="number" id="minutes">--</div>
-                    <div class="label">minutes</div>
+                    <strong id="hours">--</strong>
+                    <span>heures</span>
                 </div>
                 <div class="time-box">
-                    <div class="number" id="seconds">--</div>
-                    <div class="label">secondes</div>
+                    <strong id="minutes">--</strong>
+                    <span>minutes</span>
+                </div>
+                <div class="time-box">
+                    <strong id="seconds">--</strong>
+                    <span>secondes</span>
                 </div>
             </div>
-        </div>
 
-        <div class="total-days" id="totalDays">Soit ... jours d’amour 💙</div>
+            <p class="total-days" id="totalDays">Soit ... jours d'amour.</p>
 
-        <button onclick="window.location.href='media.html'">Revivre cette journée magique 💙</button>
-    </div>
-
-    <!-- Musique de fond “Perfect” -->
-    <iframe width="0" height="0"
-        src="[youtube.com](https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g)"
-        frameborder="0" allow="autoplay"></iframe>
+            <a class="button" href="media.html">
+                <span>Revivre cette journée</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14m-6-6 6 6-6 6" />
+                </svg>
+            </a>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
